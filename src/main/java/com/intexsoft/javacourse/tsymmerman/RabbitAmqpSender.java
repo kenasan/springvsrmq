@@ -1,6 +1,5 @@
 package com.intexsoft.javacourse.tsymmerman;
 
-import com.intexsoft.javacourse.tsymmerman.services.HalloWorldBean;
 import com.intexsoft.javacourse.tsymmerman.services.SenderSpring;
 import lombok.extern.log4j.Log4j;
 import org.springframework.context.ApplicationContext;
@@ -14,9 +13,6 @@ public class RabbitAmqpSender {
     public static void main(String[] args) {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(RabbitAmqpConfig.class);
-        HalloWorldBean halloWorldBean = context.getBean(HalloWorldBean.class);
-        String message = halloWorldBean.sayHello();
-        log.info(message);
         SenderSpring senderSpring = context.getBean(SenderSpring.class);
         senderSpring.setMessage("message.queueSpring");
         senderSpring.send();

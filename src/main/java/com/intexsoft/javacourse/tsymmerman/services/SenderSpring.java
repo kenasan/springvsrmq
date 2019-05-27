@@ -20,7 +20,7 @@ public class SenderSpring {
 
     @Scheduled(fixedDelay = 1000, initialDelay = 500)
     public void send() {
-        template.convertAndSend(message);
+        template.convertAndSend("queueSpring",message);
         log.info("SenderSpring send a message : " + message);
     }
 }
