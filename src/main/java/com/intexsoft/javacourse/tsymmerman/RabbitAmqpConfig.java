@@ -1,6 +1,5 @@
 package com.intexsoft.javacourse.tsymmerman;
 
-import com.intexsoft.javacourse.tsymmerman.services.HalloWorldBean;
 import com.intexsoft.javacourse.tsymmerman.services.SenderSpring;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -11,13 +10,8 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Created by kenasan on 26.05.2019.
  */
-@Configuration
+@Configuration("com.intexsoft.javacourse.tsymmerman.services")
 public class RabbitAmqpConfig {
-
-    @Bean
-    public HalloWorldBean halloWorldBean() {
-        return new HalloWorldBean();
-    }
 
     @Bean
     public SenderSpring senderSpring() {
@@ -28,11 +22,11 @@ public class RabbitAmqpConfig {
     public RabbitTemplate rabbitTemplate() {
         return new RabbitTemplate(connectionFactory());
     }
+
     @Bean
     public ConnectionFactory connectionFactory() {
         CachingConnectionFactory connectionFactory =
                 new CachingConnectionFactory("localhost");
         return connectionFactory;
     }
-
 }
