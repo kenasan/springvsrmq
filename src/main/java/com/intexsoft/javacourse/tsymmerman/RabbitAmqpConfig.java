@@ -1,20 +1,23 @@
 package com.intexsoft.javacourse.tsymmerman;
 
 import com.intexsoft.javacourse.tsymmerman.services.SenderSpring;
+import lombok.extern.log4j.Log4j;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * Created by kenasan on 26.05.2019.
  */
-@Configuration("com.intexsoft.javacourse.tsymmerman.services")
+@Log4j
+@SpringBootConfiguration
 public class RabbitAmqpConfig {
 
     @Bean
     public SenderSpring senderSpring() {
+        log.info("Hallo");
         return new SenderSpring();
     }
 

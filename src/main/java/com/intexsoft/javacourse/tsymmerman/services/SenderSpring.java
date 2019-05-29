@@ -16,7 +16,7 @@ public class SenderSpring {
     private RabbitTemplate template;
     @Setter
     @Getter
-    private String message = "123";
+    private String message = "786";
 
     @Scheduled(fixedDelay = 1000, initialDelay = 500)
     public void send() {

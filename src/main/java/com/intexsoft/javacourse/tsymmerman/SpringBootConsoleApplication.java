@@ -13,10 +13,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringBootConsoleApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
+        log.info("Hallo");
         SpringApplication.run(RabbitAmqpConfig.class, args);
     }
 
     public void run(String... args) throws Exception {
-        Thread.sleep(5000);
+        Thread.sleep(10000);
     }
 }
