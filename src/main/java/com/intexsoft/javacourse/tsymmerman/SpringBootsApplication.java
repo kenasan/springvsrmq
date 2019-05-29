@@ -23,7 +23,5 @@ public class SpringBootsApplication {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(SpringBootsApplication.class, args);
         log.info("run");
-
-
     }
 }

@@ -19,6 +19,10 @@ public class RabbitAmqpConfig {
     public SenderSpring senderSpring() {
         return new SenderSpring();
     }
+    @Bean
+    public Message message(){
+        return new Message();
+    }
 
     @Bean
     public ConnectionFactory connectionFactory() {
