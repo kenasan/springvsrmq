@@ -14,13 +14,15 @@ import org.springframework.scheduling.annotation.Scheduled;
 public class SenderSpring {
     @Autowired
     private RabbitTemplate template;
+    private int i;
     @Setter
     @Getter
-    private String message = "786";
+    private String message = "qwerty" + i;
 
     @Scheduled(fixedDelay = 1000, initialDelay = 500)
     public void send() {
-        template.convertAndSend("queueSpring",message);
+        template.convertAndSend("queueSpring", message);
         log.info("SenderSpring send a message : " + message);
+        i++;
     }
 }
