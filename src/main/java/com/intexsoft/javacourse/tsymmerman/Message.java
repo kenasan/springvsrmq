@@ -5,6 +5,7 @@ import lombok.Setter;
 
 /**
  * Created by kenasan on 30.05.2019.
+ * // todo javadoc
  */
 @Getter
 @Setter

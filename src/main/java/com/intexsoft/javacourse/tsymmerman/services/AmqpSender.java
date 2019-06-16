@@ -19,8 +19,9 @@ public class AmqpSender {
      *
      * @param message - object of class Message that take body of sending message at the queue.
      */
+    //todo переделать на exchange
     public void send(Message message) {
         template.convertAndSend(AmqpConstants.QUEUE_NAME, message.getBody());
-        log.info("AmqpSender send a message at the queue : " + message.getBody());
+        log.info("AmqpSender sent a message at the queue : " + message.getBody());
     }
 }

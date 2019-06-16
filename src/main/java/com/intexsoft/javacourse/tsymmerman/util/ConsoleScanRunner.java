@@ -14,9 +14,13 @@ import java.util.Scanner;
  */
 @Log4j
 public class ConsoleScanRunner implements CommandLineRunner {
+    // todo разобраться с желтым
     @Autowired
+            // todo а где модификаторы?
     Message message;
+    // todo разобраться с желтым
     @Autowired
+    // todo а где модификаторы?
     AmqpSender amqpSender;
     Scanner scanner;
 
@@ -27,14 +31,17 @@ public class ConsoleScanRunner implements CommandLineRunner {
         scanner = new Scanner(System.in);
     }
 
+    // todo override
+    // todo ругается на то, что эксепшн не бросается тут
     public void run(String... args) throws Exception {
         log.info(" Write your message to send at the Amqp queue.");
         consoleScanning();
     }
 
+    // todo разобраться с желтым
     private void consoleScanning() {
         String textConsole = scanner.next();
-        if (textConsole.equals(null)){
+        if (textConsole.equals(null)) {
             log.info("Empty message, repeat please");
             consoleScanning();
         }

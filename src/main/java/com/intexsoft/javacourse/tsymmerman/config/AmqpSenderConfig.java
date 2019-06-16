@@ -18,28 +18,35 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AmqpSenderConfig {
 
+    // todo java doc
     @Bean
     public AmqpSender senderSpring() {
         return new AmqpSender();
     }
 
+    // todo java doc
+    // todo зачем бин?
     @Bean
     public Message message() {
         return new Message();
     }
 
+    // todo java doc
     @Bean
     public ConnectionFactory connectionFactory() {
+        // todo использовать @Value и .properties файл
         CachingConnectionFactory connectionFactory =
-                new CachingConnectionFactory("localhost");
+                new CachingConnectionFactory("localhost"); // todo сделать inline, создавать инстанс -- лишнее
         return connectionFactory;
     }
 
+    // todo java doc
     @Bean
     public RabbitTemplate rabbitTemplate() {
         return new RabbitTemplate(connectionFactory());
     }
 
+    // todo java doc
     @Bean
     public CommandLineRunner commandLineRunner() {
         return new ConsoleScanRunner();
