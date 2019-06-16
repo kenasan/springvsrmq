@@ -1,6 +1,5 @@
 package com.intexsoft.javacourse.tsymmerman.config;
 
-import com.intexsoft.javacourse.tsymmerman.Message;
 import com.intexsoft.javacourse.tsymmerman.services.AmqpSender;
 import com.intexsoft.javacourse.tsymmerman.util.ConsoleScanRunner;
 import lombok.extern.log4j.Log4j;
@@ -20,30 +19,20 @@ public class AmqpSenderConfig {
 
     // todo java doc
     @Bean
-    public AmqpSender senderSpring() {
-        return new AmqpSender();
-    }
-
-    // todo java doc
-    // todo зачем бин?
-    @Bean
-    public Message message() {
-        return new Message();
-    }
-
-    // todo java doc
-    @Bean
     public ConnectionFactory connectionFactory() {
         // todo использовать @Value и .properties файл
-        CachingConnectionFactory connectionFactory =
-                new CachingConnectionFactory("localhost"); // todo сделать inline, создавать инстанс -- лишнее
-        return connectionFactory;
+        return new CachingConnectionFactory("localhost");
     }
 
     // todo java doc
     @Bean
     public RabbitTemplate rabbitTemplate() {
         return new RabbitTemplate(connectionFactory());
+    }
+
+    @Bean
+    public AmqpSender senderSpring() {
+        return new AmqpSender(new RabbitTemplate(connectionFactory()));
     }
 
     // todo java doc

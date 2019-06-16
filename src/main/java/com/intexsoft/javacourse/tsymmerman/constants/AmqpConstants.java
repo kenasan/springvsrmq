@@ -5,5 +5,7 @@ package com.intexsoft.javacourse.tsymmerman.constants;
  */
 // todo использовать .properties файл
 public class AmqpConstants {
-    public final static String QUEUE_NAME = "queueSpring";
+    public final static String EXCHANGE_NAME = "amq.direct";
+    public final static String ROUTING_KEY = "rk.queue_spring";
+
 }
