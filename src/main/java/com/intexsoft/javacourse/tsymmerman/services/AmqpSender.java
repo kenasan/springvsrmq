@@ -1,15 +1,21 @@
 package com.intexsoft.javacourse.tsymmerman.services;
 
-import com.intexsoft.javacourse.tsymmerman.constants.AmqpConstants;
-import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * Send a message at the amqp queue.
  */
-@Log4j
+@Slf4j
 public class AmqpSender {
+
+    @Value("${rabbitmq.exchange_name}")
+    protected String exchangeName;
+    @Value("${rabbitmq.routing_key}")
+    protected String routingKey;
+
     @Autowired
     private RabbitTemplate template;
 
@@ -31,7 +37,7 @@ public class AmqpSender {
      * @param message - object of class Message that take body of sending message at the queue.
      */
     public void send(String message) {
-        template.convertAndSend(AmqpConstants.EXCHANGE_NAME, AmqpConstants.ROUTING_KEY, message);
+        template.convertAndSend(exchangeName, routingKey, message);
         log.info("AmqpSender sent a message at the queue : " + message);
     }
 }
