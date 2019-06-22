@@ -21,7 +21,6 @@ public class AmqpSender {
 
     /**
      * Constructor of AmqpSender to assigned template
-     * (without it has marked yellow).
      *
      * @param template instants of RabbitTemplate,
      *                 which has method convertAndSend,
@@ -34,7 +33,7 @@ public class AmqpSender {
     /**
      * Method witch send a message.
      *
-     * @param message - object of class Message that take body of sending message at the queue.
+     * @param message - string for sending in exchange.
      */
     public void send(String message) {
         template.convertAndSend(exchangeName, routingKey, message);

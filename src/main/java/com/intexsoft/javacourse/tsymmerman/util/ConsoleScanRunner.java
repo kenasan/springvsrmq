@@ -16,37 +16,34 @@ public class ConsoleScanRunner implements CommandLineRunner {
     @Autowired
     private AmqpSender amqpSender;
     private Scanner scanner;
+    private int i;
 
     /**
-     * Constructor to start Scanner.
+     * Constructor to initialize Scanner.
      */
 
     public ConsoleScanRunner() {
         scanner = new Scanner(System.in);
     }
 
-    // todo ругается на то, что эксепшн не бросается тут
-
     /**
-     * method run will be start after load springApplication and
-     * create bean with indicate CommandLineRunner
+     * Method run will be start after load springApplication and
+     * create bean with indicate CommandLineRunner.
      *
-     * @param args
+     * @param args input messages fo Amqp queue.
      */
     @Override
     public void run(String... args) {
         log.info(" Write your message to send at the Amqp queue.");
-        try {
+        while (i <= 10) {
             consoleScanning();
-        } catch (Exception e) {
-            e.printStackTrace();
+            i++;
         }
     }
 
     // todo разобраться с желтым
-    private void consoleScanning() throws Exception {
+    private void consoleScanning() {
         String textConsole = scanner.next();
         amqpSender.send(textConsole);
-        consoleScanning();
     }
 }

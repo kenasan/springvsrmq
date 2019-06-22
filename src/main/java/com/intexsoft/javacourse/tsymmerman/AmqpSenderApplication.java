@@ -15,9 +15,9 @@ public class AmqpSenderApplication {
      * Main method to bootstrap application.
      *
      * @param args - arguments that can taking from console.
-     * @throws Exception
+     * @throws Exception if running with exception.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             SpringApplication.run(AmqpSenderApplication.class, args);
         } catch (Exception e) {

@@ -26,7 +26,7 @@ public class AmqpSenderConfig {
      * Create helper class that simplifies synchronous RabbitMQ access
      * (sending and receiving messages).
      *
-     * @return instance of RabbitTamplate , with connection to rabbitMq,
+     * @return instance of RabbitTemplate , with connection to rabbitMq,
      * see port of connection at application.properties.
      */
     @Bean
@@ -35,7 +35,7 @@ public class AmqpSenderConfig {
     }
 
     /**
-     * Create bean of AmqpSender which send messages for exchange of the queues.
+     * Create bean of AmqpSender which send messages in exchange of rabbitMq.
      *
      * @return instance using creating later rabbitTemplate.
      */
@@ -47,7 +47,7 @@ public class AmqpSenderConfig {
     // todo java doc
 
     /**
-     * CommandLineRunner interface used to indicate that a bean should run when
+     * CommandLineRunner used to indicate that a bean should run when
      * it is contained within SpringApplication
      *
      * @return instance of ConsoleScanRunner that will be running.
