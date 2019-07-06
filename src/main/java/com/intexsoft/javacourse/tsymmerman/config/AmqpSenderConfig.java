@@ -17,8 +17,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AmqpSenderConfig {
 
+    @Value("${rabbitmq.host}")
+    String rabbitMqHost;
+    @Value("${rabbitmq.password}")
+    String rabbitMqPassword;
+    @Value("${rabbitmq.user_name}")
+    String rabbitMqUserName;
     @Value("${rabbitmq.port}")
-    String rabbitMqPort;
+    int rabbitMqPort;
 
     // todo java doc
 
@@ -31,7 +37,12 @@ public class AmqpSenderConfig {
      */
     @Bean
     public RabbitTemplate rabbitTemplate() {
-        return new RabbitTemplate(new CachingConnectionFactory(rabbitMqPort));
+        com.rabbitmq.client.ConnectionFactory connectionFactory = new com.rabbitmq.client.ConnectionFactory();
+        connectionFactory.setHost(rabbitMqHost);
+        connectionFactory.setUsername(rabbitMqUserName);
+        connectionFactory.setPort(rabbitMqPort);
+        connectionFactory.setPassword(rabbitMqPassword);
+        return new RabbitTemplate(new CachingConnectionFactory(connectionFactory));
     }
 
     /**

@@ -34,7 +34,7 @@ public class ConsoleScanRunner implements CommandLineRunner {
      */
     @Override
     public void run(String... args) {
-        log.info(" Write your message to send at the Amqp queue.");
+        System.out.println(" Write your message to send at the Amqp queue.");
         while (i <= 10) {
             consoleScanning();
             i++;
